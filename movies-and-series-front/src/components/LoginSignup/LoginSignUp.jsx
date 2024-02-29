@@ -15,21 +15,22 @@ const LoginSignUp = () => {
   };
 
   return (
+    <main>
     <div className='form-container'>
       <div className='container-title'>{action}</div>
       <form action="">
         <div className='input-sign-in-container'>
-          <label htmlFor="username">Username</label> <br />
-          <input className='inputs' type="text" name='username' required />
+          <label htmlFor="username"></label> <br />
+          <input id='username' className='inputs' type="text" name='username' placeholder='username' required />
         </div>
         <div className='input-sign-in-container'>
-          <label htmlFor="password">Password</label> <br />
-          <input className='inputs' type="password" name='password' required />
+          <label htmlFor="password"></label> <br />
+          <input id='password' className='inputs' type="password" name='password' placeholder='password' required />
         </div>
         {showConfirmPassword && (
           <div className='input-sign-in-container'>
             <label htmlFor="confirmPassword">Confirm Password</label> <br />
-            <input className='inputs' type="password" name='confirmPassword' required />
+            <input className='inputs' type="password" name='confirmPassword' placeholder='password' required />
           </div>
         )}
         <div className='submit-container'>
@@ -38,6 +39,7 @@ const LoginSignUp = () => {
         </div>
       </form>
     </div>
+    </main>
   )
 }
 
