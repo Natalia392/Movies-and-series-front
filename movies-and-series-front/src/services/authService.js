@@ -18,16 +18,16 @@ export function getRequestOptions(method, bodyData) {
 }
 
 //-------- POST /login ------ Login ------
-export const loginUser = async (email, password) => {
+export const loginUser = async (username, password) => {
   try {
     const requestBody = {
-      email: email,
+      username: username,
       password: password
     };
 
-    const response = await fetch("https://intense-peak-28151-a26a6d29b3a6.herokuapp.com/api/v1/login", getRequestOptions("POST", requestBody));
+    const response = await fetch("http://localhost:8080/api/auth/signin", getRequestOptions("POST", requestBody));
 
-    if (response.status !== 201) {
+    if (response.status !== 200) {
       throw new Error(`Failed to login user with status code: ${response.status}`);
     }
 
