@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import { useNavigate, Link } from "react-router-dom";
 import './LoginSignUp.css';
 import Swal from 'sweetalert2';
-import { loginUser, signUpUser } from '../../services/authService';
+import { loginUser, signUpUser } from '../../../services/authService';
 
 const LoginSignUp = () => {
   // const navigate = useNavigate()
@@ -78,7 +78,7 @@ const LoginSignUp = () => {
         <div className='container-title'>{action}</div>
         <form action="">
           <div className='input-sign-in-container'>
-            <label htmlFor="username"></label> <br />
+            <label htmlFor="username"></label>
             <input
               id='username'
               className='inputs'
@@ -90,7 +90,7 @@ const LoginSignUp = () => {
               required />
           </div>
           <div className='input-sign-in-container'>
-            <label htmlFor="password"></label> <br />
+            <label htmlFor="password"></label>
             <input id='password'
               className='inputs'
               type='password'
@@ -102,12 +102,12 @@ const LoginSignUp = () => {
           </div>
           {showConfirmPassword && (
             <div className='input-sign-in-container'>
-              <label htmlFor="confirmPassword">Confirm Password</label> <br />
+              <label htmlFor="confirmPassword"></label>
               <input
                 className='inputs'
                 type='password'
                 name='confirmPassword'
-                placeholder='password'
+                placeholder='confirm password'
                 value={confirmPassword}
                 onChange={e => setConfirmPassword(e.target.value)}
                 required />
@@ -117,8 +117,21 @@ const LoginSignUp = () => {
             <button type='submit' className='submit' onClick={handleLogin}>Enter</button>
           </div>
           <div className='submit-container'>
-            <button className={action === 'Login' ? 'submit grey' : 'submit'} onClick={() => toggleAction('Sign Up')}>Sign Up</button>
-            <button className={action === 'Sign Up' ? 'submit grey' : 'submit'} onClick={() => toggleAction('Login')}>Login</button>
+            <button 
+            type='button'
+            className={action === 'Login' ? 'toggle grey' : 'toggle'} 
+            onClick={() => toggleAction('Sign Up')}
+            >
+              Sign Up
+            </button>
+
+            <button 
+            type='button'
+            className={action === 'Sign Up' ? 'toggle grey' : 'toggle'} 
+            onClick={() => toggleAction('Login')}
+            >
+              Login
+            </button>
           </div>
         </form>
       </div>
