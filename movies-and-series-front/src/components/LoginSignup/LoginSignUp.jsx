@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import { useNavigate, Link } from "react-router-dom";
 import './LoginSignUp.css';
 import Swal from 'sweetalert2';
-import { loginUser } from '../../services/authService';
+import { loginUser, signUpUser } from '../../services/authService';
 
 const LoginSignUp = () => {
   // const navigate = useNavigate()
@@ -27,10 +27,22 @@ const LoginSignUp = () => {
       if (password !== confirmPassword) {
         Swal.fire({
           title: 'Error!',
-          text: 'Las contraseñas no coinciden',
+          text: 'The passwords do not match',
           icon: 'error',
-          confirmButtonText: 'Aceptar',
+          confirmButtonText: 'Accept',
         });
+      } else {
+        try {
+          await signUpUser(username, password);
+          console.log('success');
+        } catch(error) {
+          Swal.fire({
+            title: 'Error!',
+            text: 'There was a problem with registration',
+            icon: 'error',
+            confirmButtonText: 'Accept'
+          });
+        }
       }
     } else {
       try {
@@ -81,7 +93,7 @@ const LoginSignUp = () => {
             <label htmlFor="password"></label> <br />
             <input id='password'
               className='inputs'
-              type="password"
+              type='password'
               name='password'
               placeholder='password'
               value={password}
@@ -93,14 +105,16 @@ const LoginSignUp = () => {
               <label htmlFor="confirmPassword">Confirm Password</label> <br />
               <input
                 className='inputs'
-                type="password"
+                type='password'
                 name='confirmPassword'
                 placeholder='password'
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
                 required />
             </div>
           )}
           <div>
-            <button type='button' className='submit' onClick={handleLogin}>Enter</button>
+            <button type='submit' className='submit' onClick={handleLogin}>Enter</button>
           </div>
           <div className='submit-container'>
             <button className={action === 'Login' ? 'submit grey' : 'submit'} onClick={() => toggleAction('Sign Up')}>Sign Up</button>

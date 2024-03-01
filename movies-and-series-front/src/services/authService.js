@@ -45,12 +45,12 @@ export const loginUser = async (username, password) => {
 export const signUpUser = async (username, password) => {
   try {
     const requestBody = {
-      username,
-      password
+      username: username,
+      password: password
     };
-    const response = await fetch("http://localhost:8080/api/auth/signin", getRequestOptions("POST", requestBody));
+    const response = await fetch("http://localhost:8080/api/auth/signup", getRequestOptions("POST", requestBody));
 
-    if (response.status !== 201) {
+    if (response.status !== 200 && response.status !== 201) {
       throw new Error(`Failed to register user with status code: ${response.status}`);
     }
 
@@ -61,5 +61,5 @@ export const signUpUser = async (username, password) => {
     console.error(error.message);
     throw error.message;
   }
-  
+
 };
