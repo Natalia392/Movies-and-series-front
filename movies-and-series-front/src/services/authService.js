@@ -40,3 +40,26 @@ export const loginUser = async (username, password) => {
     throw error.message;
   }
 };
+
+// --------POST /SignUp --------------------
+export const signUpUser = async (username, password) => {
+  try {
+    const requestBody = {
+      username: username,
+      password: password
+    };
+    const response = await fetch("http://localhost:8080/api/auth/signup", getRequestOptions("POST", requestBody));
+
+    if (response.status !== 200 && response.status !== 201) {
+      throw new Error(`Failed to register user with status code: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+    return responseData;
+
+  } catch(error) {
+    console.error(error.message);
+    throw error.message;
+  }
+
+};
