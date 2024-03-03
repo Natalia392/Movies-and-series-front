@@ -5,24 +5,21 @@ import { Navigate } from 'react-router';
 const withAuth = (Component) => {
 
   const isAuthenticated = () => {
-
     const token = localStorage.getItem('token');
-    const decodedToken = jwtDecode(token);
-    const currentTime = Date.now() / 1000
-
-    if (decodedToken.exp > currentTime) {
-      return true;
-    } 
-
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+      return decodedToken.exp > currentTime;
+    }
     return false;
   };
 
   return class extends React.Component {
     render() {
-      if (isAuthenticated) {
+      if (isAuthenticated()) {
         return <Component {...this.props} />;
       } else {
-        return <Navigate to="/login" />;
+        return <Navigate to='/' />;
       }
     }
   };
