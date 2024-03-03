@@ -44,12 +44,26 @@ const LoginSignUp = () => {
   };
   
   const handleLogin = async () => {
-    const response = await loginUser(username, password);
-    if (response) {
+    try {
+      const response = await loginUser(username, password);
       console.log(response);
       navigate('/home');
-    } else {
-      throw new Error('Incorrect Credentials.');
+    } catch (error) {
+      if (error.includes('401')) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Incorrect credentials',
+          confirmButtonText: 'Accept'
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'There was a problem',
+          confirmButtonText: 'Accept'
+        });
+      }
     }
   };
   
