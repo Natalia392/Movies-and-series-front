@@ -33,6 +33,7 @@ export const loginUser = async (username, password) => {
 
     const responseData = await response.json();
     console.log("User successfully logged in:", responseData);
+    localStorage.setItem('token', responseData.accessToken);
     return responseData;
 
   } catch (error) {
