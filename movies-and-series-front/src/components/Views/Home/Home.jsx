@@ -1,8 +1,19 @@
-import React from 'react'
+import React from 'react' 
+import GetMoviesList from '../../../services/movieService'
 
-function Home() {
+const Home = () => {
+
+  const { movies } = GetMoviesList();
+
   return (
-    <div>Home</div>
+    <div>Home
+            <h1>Popular Movies</h1>
+      <ul>
+        {movies.map(movie => (
+          <li key={movie.id}>{movie.title}</li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
