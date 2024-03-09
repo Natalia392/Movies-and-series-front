@@ -5,7 +5,7 @@ function SeriesCard({ series }) {
   const imgURL = "https://image.tmdb.org/t/p/w500";
 
   return (
-    <div className="series-card" id={series.id}>
+    <div className="media-card" id={series.id}>
       <figure className='poster-fig'>
         <img src={`${imgURL + series.poster_path}`} alt={series.name} />
       </figure>
