@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './HomeStyles.css';
-import { useMediaList } from '../../../services/movieService'
+import { useMediaList } from '../../../services/movieService';
+import { fetchGenres } from '../../../services/genreService';
 import SeriesCard from '../../commonComponents/Card/SeriesCard';
 import MovieCard from '../../commonComponents/Card/MovieCard';
 
@@ -8,6 +9,13 @@ const Home = () => {
 
   const [mediaType, setMediaType] = useState('movies');
   const { mediaList, loading } = useMediaList(mediaType);
+  const [ genres, setGenres ] = useState([]);
+
+  useEffect(() => {
+    fetchGenres().then(data => {
+      setGenres(data);
+    });
+  }, []);
 
   const handleSwitchMedia = (type) => {
     setMediaType(type);
@@ -27,9 +35,9 @@ const Home = () => {
         <div className='media-list'>
           {mediaList.map(item => (
             mediaType === 'movies' ? (
-              <MovieCard key={item.id} movie={item} />
+              <MovieCard key={item.id} movie={item} genres={genres}/>
             ) : (
-              <SeriesCard key={item.id} series={item} />
+              <SeriesCard key={item.id} series={item} genres={genres} />
             )
 
           ))}
