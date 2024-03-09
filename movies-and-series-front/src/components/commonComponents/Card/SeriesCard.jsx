@@ -1,8 +1,21 @@
 import React from 'react'
 import './CardStyles.css';
 
-function SeriesCard({ series }) {
+function SeriesCard({ series, genres }) {
   const imgURL = "https://image.tmdb.org/t/p/w500";
+
+  const getGenres = () => {
+    const foundGenres = series.genre_ids
+      .map(genreId => genres.find(genre => genre.id === genreId))
+      .filter(genre => genre)
+      .map(genre => genre.name);
+  
+    if (foundGenres.length === 0) {
+      return 'not available';
+    }
+  
+    return foundGenres.join(', ');
+  };
 
   return (
     <div className="media-card" id={series.id}>
@@ -13,7 +26,7 @@ function SeriesCard({ series }) {
       {/* <p className='media-description'>{series.overview}</p> */}
       <p className='calification'>Calification: {series.vote_average}</p>
       <div className='genres-container'>
-        <p className='genres-list'></p>
+        <p className='genres-list'>Genres: {getGenres()}</p>
       </div>
     </div>
   )
