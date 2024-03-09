@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './HomeStyles.css';
 import { useMediaList } from '../../../services/movieService'
 import SeriesCard from '../../commonComponents/Card/SeriesCard';
 import MovieCard from '../../commonComponents/Card/MovieCard';

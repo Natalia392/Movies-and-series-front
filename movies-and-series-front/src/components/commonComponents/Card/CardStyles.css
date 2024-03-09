@@ -7,6 +7,7 @@
   background-color: rgb(10, 22, 22);;
   width: 15rem;
   border-radius: 0.5rem;
+  transition: transform 0.3s ease;
 }
 
 .poster-fig {
@@ -29,4 +30,8 @@
   font-size: 0.8rem;
   color: beige;
   margin: 0;
+}
+
+.media-card:hover {
+  transform: scale(1.1);
 }
