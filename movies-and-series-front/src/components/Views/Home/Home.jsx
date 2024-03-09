@@ -14,10 +14,13 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Popular {mediaType === 'movies' ? 'Movies' : 'Series'} </h1>
-      <button type='button' onClick={() => handleSwitchMedia('movies')}>Movies</button>
-      <button type='button' onClick={() => handleSwitchMedia('series')}>Series</button>
+    <div className='home-container'>
+      <h1>Explore Movies and Series</h1>
+      <nav>
+        <h2>Popular {mediaType === 'movies' ? 'Movies' : 'Series'} </h2>
+        <button type='button' onClick={() => handleSwitchMedia('movies')}>Movies</button>
+        <button type='button' onClick={() => handleSwitchMedia('series')}>Series</button>
+      </nav>
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -28,7 +31,7 @@ const Home = () => {
             ) : (
               <SeriesCard key={item.id} series={item} />
             )
-            
+
           ))}
         </div>
       )}
