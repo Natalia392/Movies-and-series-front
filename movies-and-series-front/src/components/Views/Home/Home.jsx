@@ -1,21 +1,28 @@
-import React from 'react'
-import GetMoviesList from '../../../services/movieService'
+import React, { useState } from 'react'
+import { useMediaList } from '../../../services/movieService'
 
 const Home = () => {
 
-  const { movies, loading } = GetMoviesList();
+  const [mediaType, setMediaType] = useState('movies');
+  const { mediaList, loading } = useMediaList(mediaType);
+
+  const handleSwitchMedia = (type) => {
+    setMediaType(type);
+  };
 
   return (
     <div>
-      <h1>Popular Movies</h1>
+      <h1>Popular {mediaType === 'movies' ? 'Movies' : 'Series'} </h1>
+      <button type='button' onClick={() => handleSwitchMedia('movies')}>Movies</button>
+      <button type='button' onClick={() => handleSwitchMedia('series')}>Series</button>
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <ul>
-          {movies.map(movie => (
-            <li key={movie.id}>{movie.title}</li>
+        <div className='media-list'>
+          {mediaList.map(item => (
+            <li key={item.id}>{item.title}</li>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

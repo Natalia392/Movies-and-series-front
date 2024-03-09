@@ -11,7 +11,7 @@ main {
   background: rgb(225, 225, 225);
   padding: 1rem;
   gap: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 form {
