@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useMediaList } from '../../../services/movieService'
+import SeriesCard from '../../commonComponents/Card/SeriesCard';
+import MovieCard from '../../commonComponents/Card/MovieCard';
 
 const Home = () => {
 
@@ -20,7 +22,12 @@ const Home = () => {
       ) : (
         <div className='media-list'>
           {mediaList.map(item => (
-            <li key={item.id}>{item.title}</li>
+            mediaType === 'movies' ? (
+              <MovieCard key={item.id} movie={item} />
+            ) : (
+              <SeriesCard key={item.id} series={item} />
+            )
+            
           ))}
         </div>
       )}
