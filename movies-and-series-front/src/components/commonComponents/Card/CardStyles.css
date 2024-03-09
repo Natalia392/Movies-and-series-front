@@ -1,0 +1,30 @@
+.series-card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: rgb(10, 22, 22);;
+  width: 15rem;
+  border-radius: 0.5rem;
+}
+
+.poster-fig {
+  margin: 0;
+  padding: 0;
+}
+
+.poster-fig img {
+  height: 20rem;
+  border-radius: 0.5rem;
+}
+
+.media-title {
+  font-size: 1rem;
+  color: beige;
+}
+
+.series-card p {
+  font-size: 0.8rem;
+  color: beige;
+}
