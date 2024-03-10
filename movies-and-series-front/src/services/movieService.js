@@ -31,9 +31,26 @@ export const useMediaList = (mediaType) => {
     fetchData(endpoint).then(data => {
       setMediaList(data);
       setLoading(false);
-      console.log(data);
     });
   }, [mediaType]);
 
   return { mediaList, loading };
+};
+
+
+// search by name
+export const searchMedia = async (movieName) => {
+  const baseUrl = 'https://api.themoviedb.org/3/search/movie'; // url base para la búsqueda por nombre
+  const query = encodeURIComponent(movieName); // Codificar el nombre de la película para usarlo en la URL
+
+  const endpoint = `${baseUrl}?query=${query}&include_adult=false&language=en-US&page=1`; // url restultante (con las restricciones y condiciones que traigo desde la documentación)
+
+  try {
+    const results = await fetchData(endpoint);
+    console.log(results);
+    return results;
+  } catch (error) {
+    console.error('Error searching movie:', error);
+    return null;
+  }
 };
