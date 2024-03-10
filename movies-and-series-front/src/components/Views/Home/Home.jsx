@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './HomeStyles.css';
-import { searchMedia, useMediaList } from '../../../services/movieService';
+import { searchMovie, searchSeries, useMediaList } from '../../../services/movieService';
 import { fetchGenres } from '../../../services/genreService';
 import SeriesCard from '../../commonComponents/Card/SeriesCard';
 import MovieCard from '../../commonComponents/Card/MovieCard';
@@ -23,12 +23,29 @@ const Home = () => {
     setMediaType(type);
   };
 
+  // const handleSearch = async (term) => {
+  //   setSearchTerm(term);
+  //   try {
+  //     const results = await searchMovie(term);
+  //     if (results) {
+  //       setSearchResults(results); // Almacena los resultados de la búsqueda
+  //     }
+  //   } catch (error) {
+  //     console.error('Error searching media:', error);
+  //   }
+  // };
+
   const handleSearch = async (term) => {
     setSearchTerm(term);
     try {
-      const results = await searchMedia(term);
+      let results = [];
+      if (mediaType === 'movies') {
+        results = await searchMovie(term);
+      } else if (mediaType === 'series') {
+        results = await searchSeries(term); // Llama a searchSeries si el tipo de medio es 'series'
+      }
       if (results) {
-        setSearchResults(results); // Almacena los resultados de la búsqueda
+        setSearchResults(results);
       }
     } catch (error) {
       console.error('Error searching media:', error);
