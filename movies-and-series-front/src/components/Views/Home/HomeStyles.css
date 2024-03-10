@@ -1,3 +1,9 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .media-list {
   display: flex;
   flex-wrap: wrap;
@@ -6,5 +12,21 @@
 }
 
 h1, h2 {
-  color: rgb(220, 245, 244);
+  color: beige;
+  margin: 0;
+  margin-left: 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(10, 22, 22);
+  margin: 0;
+}
+
+.loading {
+  color: beige;
 }
