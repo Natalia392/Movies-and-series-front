@@ -45,11 +45,18 @@
   border: none;
   background-color: rgb(92, 189, 188);
   font-weight: 700;
-  color: rgb(1, 43, 42);
+  color: rgb(10, 22, 22);
 }
 
 .search-btn:hover {
   background-color: rgb(1, 43, 42);
   color: rgb(92, 189, 188);
   border: solid 1px rgb(92, 189, 188);
+}
+
+.indicator {
+  background-color:rgb(92, 189, 188);
+  height: 0.2rem;
+  width: 100%;
+  border-radius: 10px;
 }

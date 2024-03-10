@@ -1,6 +1,17 @@
 main {
   display: flex;
-  height: 100%;
+  height: 90%;
+}
+
+.header-login {
+  display: flex;
+  align-items: center;
+  background-color: rgb(10, 22, 22);
+  height: 10%;
+}
+
+.header-login h1 {
+  font-size:larger;
 }
 
 .form-container {

@@ -54,10 +54,10 @@ const Home = () => {
 
   return (
     <div className='home-container'>
-      <div className='navigation'>
+      <header className='navigation'>
         <h2>Explore {mediaType === 'movies' ? 'Movies' : 'Series'} </h2>
         <Navigation handleSwitchMedia={handleSwitchMedia} handleSearch={handleSearch} />
-      </div>
+      </header>
       {loading ? (
         <div className='loading'>Loading...</div>
       ) : (

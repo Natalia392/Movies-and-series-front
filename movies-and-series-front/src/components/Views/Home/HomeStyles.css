@@ -22,6 +22,7 @@ h1, h2 {
 .navigation {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: rgb(10, 22, 22);
   margin: 0;
 }

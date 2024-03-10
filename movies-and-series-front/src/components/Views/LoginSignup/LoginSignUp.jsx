@@ -28,7 +28,7 @@ const LoginSignUp = () => {
       handleError(error);
     }
   };
-  
+
   const handleSignUp = async () => {
     if (password !== confirmPassword) {
       throw new Error('The passwords do not match');
@@ -42,7 +42,7 @@ const LoginSignUp = () => {
       confirmButtonText: 'Accept'
     });
   };
-  
+
   const handleLogin = async () => {
     try {
       const response = await loginUser(username, password);
@@ -66,7 +66,7 @@ const LoginSignUp = () => {
       }
     }
   };
-  
+
   const handleError = (error) => {
     console.error('Error:', error);
     Swal.fire({
@@ -78,69 +78,74 @@ const LoginSignUp = () => {
   };
 
   return (
-    <main>
-      <div className='form-container'>
-        <div className='container-title'>{action}</div>
-        <form onSubmit={handleSubmit} action="">
-          <div className='input-sign-in-container'>
-            <label htmlFor="username"></label>
-            <input
-              id='username'
-              className='inputs'
-              type="text"
-              name='username'
-              placeholder='username'
-              value={username}
-              onChange={e => setUsername(e.target.value)}
-              required />
-          </div>
-          <div className='input-sign-in-container'>
-            <label htmlFor="password"></label>
-            <input id='password'
-              className='inputs'
-              type='password'
-              name='password'
-              placeholder='password'
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required />
-          </div>
-          {action === 'Sign Up' && (
+    <>
+      <header className='header-login'>
+        <h1>Explore your favorite movies and series!</h1>
+      </header>
+      <main>
+        <div className='form-container'>
+          <div className='container-title'>{action}</div>
+          <form onSubmit={handleSubmit} action="">
             <div className='input-sign-in-container'>
-              <label htmlFor="confirmPassword"></label>
+              <label htmlFor="username"></label>
               <input
+                id='username'
                 className='inputs'
-                type='password'
-                name='confirmPassword'
-                placeholder='confirm password'
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
+                type="text"
+                name='username'
+                placeholder='username'
+                value={username}
+                onChange={e => setUsername(e.target.value)}
                 required />
             </div>
-          )}
-          <div>
-            <button type='submit' className='submit'>Enter</button>
-          </div>
-          <div className='submit-container'>
-            <button
-              type='button'
-              className={action === 'Login' ? 'toggle grey' : 'toggle'}
-              onClick={() => toggleAction('Sign Up')}
-            >
-              Sign Up
-            </button>
+            <div className='input-sign-in-container'>
+              <label htmlFor="password"></label>
+              <input id='password'
+                className='inputs'
+                type='password'
+                name='password'
+                placeholder='password'
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                required />
+            </div>
+            {action === 'Sign Up' && (
+              <div className='input-sign-in-container'>
+                <label htmlFor="confirmPassword"></label>
+                <input
+                  className='inputs'
+                  type='password'
+                  name='confirmPassword'
+                  placeholder='confirm password'
+                  value={confirmPassword}
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  required />
+              </div>
+            )}
+            <div>
+              <button type='submit' className='submit'>Enter</button>
+            </div>
+            <div className='submit-container'>
+              <button
+                type='button'
+                className={action === 'Login' ? 'toggle grey' : 'toggle'}
+                onClick={() => toggleAction('Sign Up')}
+              >
+                Sign Up
+              </button>
 
-            <button
-              type='button'
-              className={action === 'Sign Up' ? 'toggle grey' : 'toggle'}
-              onClick={() => toggleAction('Login')}
-            >
-              Login
-            </button>
-          </div>
-        </form>
-      </div>
-    </main>
+              <button
+                type='button'
+                className={action === 'Sign Up' ? 'toggle grey' : 'toggle'}
+                onClick={() => toggleAction('Login')}
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </>
   )
 }
 
