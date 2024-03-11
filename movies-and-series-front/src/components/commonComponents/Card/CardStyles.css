@@ -1,6 +1,7 @@
 .media-card {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
   padding: 1rem;
@@ -35,4 +36,30 @@
 .media-card:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+.bottom-div {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.like-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.like-btn {
+  border-radius: 0.7rem;
+  border: none;
+  background-color:beige;
+  height: 2.5rem;
+  font-weight: 700;
+  color: rgb(10, 22, 22);
+}
+
+.like-btn:hover {
+  cursor: pointer;
+  color: beige;
+  background-color:rgb(196, 30, 30);
 }

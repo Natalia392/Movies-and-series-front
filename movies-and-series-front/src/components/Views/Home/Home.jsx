@@ -23,18 +23,6 @@ const Home = () => {
     setMediaType(type);
   };
 
-  // const handleSearch = async (term) => {
-  //   setSearchTerm(term);
-  //   try {
-  //     const results = await searchMovie(term);
-  //     if (results) {
-  //       setSearchResults(results); // Almacena los resultados de la búsqueda
-  //     }
-  //   } catch (error) {
-  //     console.error('Error searching media:', error);
-  //   }
-  // };
-
   const handleSearch = async (term) => {
     setSearchTerm(term);
     try {
