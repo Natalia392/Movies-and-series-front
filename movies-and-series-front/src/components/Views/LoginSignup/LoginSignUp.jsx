@@ -49,7 +49,8 @@ const LoginSignUp = () => {
   const handleLogin = async () => {
     try {
       const response = await loginUser(username, password);
-      setUserId(response.userId);
+      console.log(response.id);
+      setUserId(response.id);
       navigate('/home');
     } catch (error) {
       if (error.includes('401')) {
