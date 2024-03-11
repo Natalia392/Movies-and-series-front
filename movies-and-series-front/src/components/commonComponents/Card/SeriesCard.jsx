@@ -1,7 +1,7 @@
 import React from 'react'
 import './CardStyles.css';
 
-function SeriesCard({ series, genres }) {
+const SeriesCard = ({ series, genres }) => {
   const imgURL = "https://image.tmdb.org/t/p/w500";
 
   const getGenres = () => {

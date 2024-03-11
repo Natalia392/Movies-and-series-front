@@ -22,4 +22,22 @@ export const addFavoriteMovie = async(userId, movieId) => {
 
 };
 
+export const getUserFavoritesMovies = async (userId) => {
+  try {
+    const response = await fetch(`/api/favorites/user/${userId}`);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to get favorites movies with status code ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('User favorite movies:', data);
+    return data;
+    
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+    throw error.message;
+  }
+};
+
 // here goes the get all favorites and the remove favorites
