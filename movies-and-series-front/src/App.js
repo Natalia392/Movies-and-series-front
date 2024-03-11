@@ -4,8 +4,10 @@ import withAuth from './hoc/withAuth.jsx';
 import LoginSignUp from './components/Views/LoginSignup/LoginSignUp.jsx';
 import Home from './components/Views/Home/Home.jsx';
 import { UserProvider } from './services/userContext.js';
+import FavoriteMovies from './components/Views/Favorites/FavoriteMovies.jsx';
 
 const AuthenticatedHome = withAuth(Home);
+const AuthenticatedFavorites = withAuth(FavoriteMovies);
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginSignUp />} />
           <Route path='/home' element={<AuthenticatedHome />} />
+          <Route path='/favorites' element={<AuthenticatedFavorites />} />
         </Routes>
       </Router>
     </UserProvider>
