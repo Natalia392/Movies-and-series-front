@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './NavigationStyles.css';
+import { useNavigate } from 'react-router';
 
 const Navigation = ({ handleSwitchMedia, handleSearch }) => {
+  const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMediaType, setSelectedMediaType] = useState('movies');
 
@@ -20,10 +22,17 @@ const Navigation = ({ handleSwitchMedia, handleSearch }) => {
     handleSubmit();
   };
 
+  const goToFavorites = () => {
+      navigate('/favorites'); // Redirigir al usuario a la página de favoritos
+  };
+
   return (
     <nav className='nav-bar'>
       <div className='btn-container'>
-      <button className='nav-btn' type='button' onClick={() => handleButtonClick('movies')}>
+        <button className='nav-btn' type='button' onClick={goToFavorites}>
+          My Favorites
+        </button>
+        <button className='nav-btn' type='button' onClick={() => handleButtonClick('movies')}>
           Movies
           {selectedMediaType === 'movies' && <div className='indicator'></div>}
         </button>

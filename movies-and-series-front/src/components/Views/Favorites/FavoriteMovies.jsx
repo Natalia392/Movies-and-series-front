@@ -1,5 +1,5 @@
-import React, { useEffect, useContext, useState } from 'react'
-import UserContext from '../../../services/userContext'
+import React, { useContext, useState, useEffect } from 'react';
+import UserContext from '../../../services/userContext';
 import { getUserFavoritesMovies } from '../../../services/manageFavoritesSerice';
 import MovieCard from '../../commonComponents/Card/MovieCard';
 
@@ -11,7 +11,7 @@ const FavoriteMovies = () => {
     const fetchUserFavorites = async () => {
       try {
         const userFavorites = await getUserFavoritesMovies(userId);
-        console.log(userFavorites);
+        console.log(userFavorites, userId);
         setFavoriteMovies(userFavorites);
       } catch (error) {
         console.error('Error fetching user favorites:', error);
@@ -19,18 +19,22 @@ const FavoriteMovies = () => {
     };
 
     fetchUserFavorites();
-  }, [userId]);
+
+  }, []);
 
   return (
-      <div className="favorite-movies">
-        <h2>Favorite Movies</h2>
-        <div className="movies-container">
-          {favoriteMovies.map(movie => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
-      </div>
-  )
-}
+    <div className="favorite-movies">
+      <h2>Your Favorite Movies</h2>
+      <p>Iba a utilizar el id para luego mostrar las películas, pero no alcancé a pensar bien cómo</p>
+      <ul className="movies-list">
+        {favoriteMovies.map(item => (
+          <li key={item.id} className="movie-item">
+            Movie id: {item.movieId}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-export default FavoriteMovies
+export default FavoriteMovies;

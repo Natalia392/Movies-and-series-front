@@ -7,7 +7,7 @@ import { UserProvider } from './services/userContext.js';
 import FavoriteMovies from './components/Views/Favorites/FavoriteMovies.jsx';
 
 const AuthenticatedHome = withAuth(Home);
-const AuthenticateFavorites = withAuth(FavoriteMovies);
+const AuthenticatedFavorites = withAuth(FavoriteMovies);
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginSignUp />} />
           <Route path='/home' element={<AuthenticatedHome />} />
-          <Route path='/favorites' element={<AuthenticateFavorites />} />
+          <Route path='/favorites' element={<AuthenticatedFavorites />} />
         </Routes>
       </Router>
     </UserProvider>

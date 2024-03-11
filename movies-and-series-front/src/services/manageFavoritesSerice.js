@@ -24,7 +24,7 @@ export const addFavoriteMovie = async(userId, movieId) => {
 
 export const getUserFavoritesMovies = async (userId) => {
   try {
-    const response = await fetch(`/api/favorites/user/${userId}`);
+    const response = await fetch(`http://localhost:8080/api/favorites/user/${userId}`);
     
     if (!response.ok) {
       throw new Error(`Failed to get favorites movies with status code ${response.status}`);
