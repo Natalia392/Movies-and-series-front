@@ -31,7 +31,7 @@ const MovieCard = ({ movie, genres }) => {
           </div>
         </div>
         <div className='like-div'>
-          <button className='like-btn'>Save</button>
+          <button id={movie.id} className='like-btn'>Save</button>
         </div>
       </div>
     </div>

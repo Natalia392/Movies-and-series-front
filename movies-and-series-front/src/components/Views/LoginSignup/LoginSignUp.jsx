@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import './LoginSignUp.css';
 import Swal from 'sweetalert2';
 import { loginUser, signUpUser } from '../../../services/authService';
+import UserContext from '../../../services/userContext';
 
 const LoginSignUp = () => {
   const navigate = useNavigate()
+  const { setUserId } = useContext(UserContext);
+
   const [action, setAction] = useState('Sign Up');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -46,7 +49,7 @@ const LoginSignUp = () => {
   const handleLogin = async () => {
     try {
       const response = await loginUser(username, password);
-      console.log(response);
+      setUserId(response.userId);
       navigate('/home');
     } catch (error) {
       if (error.includes('401')) {

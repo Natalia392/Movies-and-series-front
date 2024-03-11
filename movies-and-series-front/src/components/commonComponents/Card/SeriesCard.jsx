@@ -18,7 +18,7 @@ function SeriesCard({ series, genres }) {
   };
 
   return (
-    <div className="media-card" id={series.id}>
+    <div className="media-card">
       <figure className='poster-fig'>
         <img src={`${imgURL + series.poster_path}`} alt={series.name} />
       </figure>
@@ -31,7 +31,7 @@ function SeriesCard({ series, genres }) {
           </div>
         </div>
         <div className='like-div'>
-          <button className='like-btn' type='button'>Save</button>
+          <button id={series.id} className='like-btn' type='button'>Save</button>
         </div>
       </div>
     </div>
